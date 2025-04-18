@@ -81,6 +81,7 @@ func InitToolsets(passedToolsets []string, readOnly bool, getClient GetClientFn,
 	orgPackages := toolsets.NewToolset("org_packages", "GitHub Organization Packages related tools").
 		AddReadTools(
 			toolsets.NewServerTool(OrgListPackages(getClient, t)),
+			toolsets.NewServerTool(OrgPackageGetAllVersions(getClient, t)),
 		)
 	// Keep experiments alive so the system doesn't error out when it's always enabled
 	experiments := toolsets.NewToolset("experiments", "Experimental features that are not considered stable yet")
